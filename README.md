@@ -1,3 +1,4 @@
+hello
 # CSP Arcade Project
 
 This repository serves as a template for teams to create their own classic arcade games as part of the Computer Science Principles (CSP) course using p5.js.
