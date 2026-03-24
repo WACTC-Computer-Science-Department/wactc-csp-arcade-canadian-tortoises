@@ -1,7 +1,7 @@
 // ============================================
 // PLAYER — Your name here!
 // Extends GameObject with player controls.
-// ============================================
+// =======================================
 
 class Player extends GameObject {
   constructor(x, y) {
@@ -9,7 +9,7 @@ class Player extends GameObject {
     this.speed = 5;
     this.health = 100;
     this.maxHealth = 100;
-    this.color = '#00ff88';
+    this.color = color(0,2,44);
 
     // TODO: Add any additional properties your player needs
     // Examples: this.abilities = [], this.score = 0, this.direction = 0
@@ -21,14 +21,14 @@ class Player extends GameObject {
     // Don't forget to keep the player inside the canvas!
     //
     // Example:
-    // if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) this.x -= this.speed;
-    // if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) this.x += this.speed;
-    // if (keyIsDown(UP_ARROW) || keyIsDown(87)) this.y -= this.speed;
-    // if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) this.y += this.speed;
+    if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) this.x -= this.speed;
+    if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) this.x += this.speed;
+    if (keyIsDown(UP_ARROW) || keyIsDown(87)) this.y -= this.speed;
+    if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) this.y += this.speed;
     //
     // Keep in bounds:
-    // this.x = constrain(this.x, this.size, width - this.size);
-    // this.y = constrain(this.y, this.size, height - this.size);
+    this.x = constrain(this.x, this.size, width - this.size);
+    this.y = constrain(this.y, this.size, height - this.size);
   }
 
   draw() {
@@ -37,12 +37,12 @@ class Player extends GameObject {
     ellipse(this.x, this.y, this.size * 2);
 
     // TODO: Draw health bar above player
-    // let barWidth = 30;
-    // let healthPercent = this.health / this.maxHealth;
-    // fill(100);
-    // rect(this.x - barWidth/2, this.y - this.size - 10, barWidth, 4);
-    // fill(0, 255, 100);
-    // rect(this.x - barWidth/2, this.y - this.size - 10, barWidth * healthPercent, 4);
+    let barWidth = 30;
+    let healthPercent = this.health / this.maxHealth;
+    fill(100);
+    rect(this.x - barWidth/2, this.y - this.size - 10, barWidth, 4);
+    fill(0, 255, 100);
+    rect(this.x - barWidth/2, this.y - this.size - 10, barWidth * healthPercent, 4);
   }
 
   takeDamage(amount) {
