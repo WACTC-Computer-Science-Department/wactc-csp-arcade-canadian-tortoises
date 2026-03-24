@@ -56,7 +56,6 @@ team-repo/
 - Use GitHub Classroom for assignment management
 
 ## Instructor Notes
-
 - Monitor team repositories
 - Provide feedback via pull requests
 - Use GitHub Classroom for assignment management
