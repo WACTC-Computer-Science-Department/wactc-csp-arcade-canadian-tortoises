@@ -43,4 +43,32 @@ class Projectile extends GameObject {
   // Examples: class Missile extends Projectile (homing)
   //           class Laser extends Projectile (instant, no travel)
   //           class Spell extends Projectile (area damage)
+  
+  class StrongBow extends Projectile {
+    constructor(x, y, dirX, dirY, speed, damage) {
+    super(x, y, 4);  // size = 4
+    this.speed = speed || 8;
+    this.damage = damage || 10;
+    this.color = '#3562c4';
+    }
+  }
+
+  class Lazer extends Projectile {
+    constructor(x, y, dirX, dirY, speed, damage) {
+    super(x, y, 4);  // size = 4
+    this.speed = speed || 8;
+    this.damage = damage || 10;
+    this.color = '#3562c4';
+    }
+  }
+
+  class Spell extends Projectile {
+    constructor(x, y, dirX, dirY, speed, damage) {
+    super(x, y, 4);  // size = 4
+    this.speed = speed || 8;
+    this.damage = damage || 10;
+    this.color = '#3562c4';
+    }
+  }
+
 }
