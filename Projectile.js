@@ -38,9 +38,12 @@ class Projectile extends GameObject {
     fill(this.color);
     ellipse(this.x, this.y, this.size * 2);
   }
-
+}
   // TODO: Create projectile subclasses for variety
   // Examples: class Missile extends Projectile (homing)
   //           class Laser extends Projectile (instant, no travel)
   //           class Spell extends Projectile (area damage)
-}
+  class Laser extends Projectile{
+
+  } 
+

@@ -21,10 +21,12 @@ class Player extends GameObject {
     // Don't forget to keep the player inside the canvas!
     //
      // Calculate new position
-  if (keyCode == UP_ARROW) this.y -= this.speed;
-  if (keyCode == DOWN_ARROW) this.y += this.speed;
-  if (keyCode == LEFT_ARROW) this.x -= this.speed;
-  if (keyCode == RIGHT_ARROW) this.x += this.speed;
+    if(this.x <= 775 && this.y <= 375 ){
+      if (keyCode == UP_ARROW) this.y -= this.speed;
+      if (keyCode == DOWN_ARROW) this.y += this.speed;
+      if (keyCode == LEFT_ARROW) this.x -= this.speed;
+      if (keyCode == RIGHT_ARROW) this.x += this.speed;
+    }
     // Example:
     // if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) this.x -= this.speed;
     // if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) this.x += this.speed;
