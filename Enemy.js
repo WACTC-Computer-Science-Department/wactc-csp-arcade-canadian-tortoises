@@ -1,4 +1,4 @@
-// dschermele test============================================
+// ============================================
 // ENEMY — Your name here!
 // Extends GameObject with AI behavior.
 // Create subclasses for different enemy types!
@@ -19,15 +19,14 @@ class Enemy extends GameObject {
   update() {
     // TODO: Add AI behavior
     // Example: Move toward the player
-    //
     // To chase a target:
-    // let dx = target.x - this.x;
-    // let dy = target.y - this.y;
-    // let distance = dist(this.x, this.y, target.x, target.y);
-    // if (distance > 0) {
-    //   this.x += (dx / distance) * this.speed;
-    //   this.y += (dy / distance) * this.speed;
-    // }
+    let dx = target.x - this.x;
+    let dy = target.y - this.y;
+    let distance = dist(this.x, this.y, target.x, target.y);
+    if (distance > 0) {
+      this.x += (dx / distance) * this.speed;
+      this.y += (dy / distance) * this.speed;
+    }
   }
 
   draw() {
@@ -54,35 +53,43 @@ class Enemy extends GameObject {
 // TODO: Create enemy subclasses with different behaviors
 //
 // Example:
-// class FastEnemy extends Enemy {
-//   constructor(x, y) {
-//     super(x, y, 8, 4);  // smaller, faster
-//     this.color = '#ff8800';
-//     this.health = 15;
-//     this.damage = 5;
-//   }
-// }
-//
-// class TankEnemy extends Enemy {
-//   constructor(x, y) {
-//     super(x, y, 20, 1);  // bigger, slower
-//     this.color = '#cc0000';
-//     this.health = 100;
-//     this.damage = 25;
-//   }
-// }
-//
-// class BossEnemy extends Enemy {
-//   constructor(x, y) {
-//     super(x, y, 30, 0.5);
-//     this.color = '#9900ff';
-//     this.health = 500;
-//     this.damage = 40;
-//     this.phase = 1;
-//   }
-//
-//   update() {
-//     super.update();  // call parent AI
-//     // Add boss-specific behavior based on this.phase
-//   }
-// }
+class rat extends Enemy {
+  constructor(x, y) {
+    super(x, y, 8, 4);  // smaller, faster
+    this.color = '#808080';
+    this.health = 15;
+    this.damage = 5;
+  }
+}
+
+class demon_guy extends Enemy {
+  constructor(x, y) {
+    super(x, y, 20, 1);  // bigger, slower
+    this.color = '#cc0000';
+    this.health = 50;
+    this.damage = 25;
+  }
+}
+
+class boss_minion extends Enemy {
+  constructor(x, y) {
+    super(x, y, 20, 1);  // bigger, slower
+    this.color = '#FFA500';
+    this.health = 50;
+    this.damage = 25;
+  }
+}
+class BossEnemy extends Enemy {
+  constructor(x, y) {
+    super(x, y, 30, 0.5);
+    this.color = '#9900ff';
+    this.health = 500;
+    this.damage = 40;
+    this.phase = 1;
+  }
+
+  update() {
+    super.update();  // call parent AI
+    // Add boss-specific behavior based on this.phase
+  }
+}
