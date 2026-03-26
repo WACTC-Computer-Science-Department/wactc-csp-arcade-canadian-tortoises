@@ -92,9 +92,6 @@ class miteEnemy extends Enemy {
   }
 }
 
-
-
-
    update();{
    super.update();  // call parent AI
 // Add boss-specific behavior based on this.phase
