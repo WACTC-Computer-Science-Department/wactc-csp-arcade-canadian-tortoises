@@ -12,7 +12,7 @@ Students will work in teams to code a classic arcade game using p5.js and collab
 1. **Create a Team Repository**: Each team should create their own repository from this template.
    - Go to GitHub and create a new repository
    - Use this repository as a template
-   - Name it appropriately (e.g., `Canadian-Tortoises-arcade-game`)
+   - Name it appropriately (e.g., `team-name-arcade-game`)
 
 2. **Technology Stack**:
    - **p5.js**: JavaScript library for creative coding and graphics
@@ -57,7 +57,6 @@ team-repo/
 - Use GitHub Classroom for assignment management
 
 ## Instructor Notes
-
 - Monitor team repositories
 - Provide feedback via pull requests
 - Use GitHub Classroom for assignment management

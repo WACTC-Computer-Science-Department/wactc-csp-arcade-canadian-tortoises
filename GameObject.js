@@ -2,7 +2,7 @@
 // GAME OBJECT — Base Class
 // All game objects extend this class.
 // Edit carefully — changes affect ALL subclasses!
-// ============================================
+// ===========================================
 
 class GameObject {
   constructor(x, y, size) {
