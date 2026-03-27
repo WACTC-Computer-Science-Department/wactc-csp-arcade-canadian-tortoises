@@ -42,9 +42,7 @@ class Projectile extends GameObject {
   // TODO: Create projectile subclasses for variety
   // Examples: class Missile extends Projectile (homing)
   //           class Laser extends Projectile (instant, no travel)
-  //           class Spell extends Projectile (area damage)
-<<<<<<< HEAD
-  
+  //           class Spell extends Projectile (area damage)  
   class StrongBow extends Projectile {
     constructor(x, y, dirX, dirY, speed, damage) {
     super(x, y, 4);  // size = 4
@@ -72,10 +70,7 @@ class Projectile extends GameObject {
     }
   }
 
-}
-=======
   class Laser extends Projectile{
 
   } 
 
->>>>>>> 53d55c4fa11251a01b9de72f61d70e4cae5fc391
