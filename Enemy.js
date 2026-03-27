@@ -1,9 +1,8 @@
 // dschermele test============================================
 // ENEMY — Your name here!
-=======
 // ============================================
 // ENEMY — nicolas reggiani
->>>>>>> 0d2fc5d (//propetiys)
+//(//propetiys)
 // Extends GameObject with AI behavior.
 // Create subclasses for different enemy types!
 // ============================================
@@ -54,37 +53,36 @@ class Enemy extends GameObject {
 // ============================================
 
 // TODO: Create enemy subclasses with different behaviors
-//
-// Example:
-// class FastEnemy extends Enemy {
-//   constructor(x, y) {
-//     super(x, y, 8, 4);  // smaller, faster
-//     this.color = '#ff8800';
-//     this.health = 15;
-//     this.damage = 5;
-//   }
-// }
-//
-// class TankEnemy extends Enemy {
-//   constructor(x, y) {
-//     super(x, y, 20, 1);  // bigger, slower
-//     this.color = '#cc0000';
-//     this.health = 100;
-//     this.damage = 25;
-//   }
-// }
-//
-// class BossEnemy extends Enemy {
-//   constructor(x, y) {
-//     super(x, y, 30, 0.5);
-//     this.color = '#9900ff';
-//     this.health = 500;
-//     this.damage = 40;
-//     this.phase = 1;
-//   }
-//
-//   update() {
-//     super.update();  // call parent AI
-//     // Add boss-specific behavior based on this.phase
-//   }
-// }
+
+class FastEnemy extends Enemy {
+  constructor(x, y) {
+    super(x, y, 8, 4);  // smaller, faster
+    this.color = '#ff8800';
+    this.health = 15;
+    this.damage = 5;
+  }
+}
+
+class TankEnemy extends Enemy {
+  constructor(x, y) {
+    super(x, y, 20, 1);  // bigger, slower
+    this.color = '#cc0000';
+    this.health = 100;
+    this.damage = 25;
+  }
+}
+
+class BossEnemy extends Enemy {
+  constructor(x, y) {
+    super(x, y, 30, 0.5);
+    this.color = '#9900ff';
+    this.health = 500;
+    this.damage = 40;
+    this.phase = 1;
+  }
+
+  update() {
+    super.update();  // call parent AI
+    // Add boss-specific behavior based on this.phase
+  }
+}
