@@ -12,8 +12,7 @@ function setup() {
 }
 
 function draw() {
-  background('#1a1a2e');
-
+  background('#1c2e1a');
   if (gm.gameState === 'menu') {
     drawMenu(gm);
   } else if (gm.gameState === 'playing') {

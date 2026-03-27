@@ -1,5 +1,9 @@
 // dschermele test============================================
 // ENEMY — Your name here!
+=======
+// ============================================
+// ENEMY — nicolas reggiani
+>>>>>>> 0d2fc5d (//propetiys)
 // Extends GameObject with AI behavior.
 // Create subclasses for different enemy types!
 // ============================================
@@ -10,10 +14,8 @@ class Enemy extends GameObject {
     this.speed = speed || 2;
     this.health = 30;
     this.damage = 10;
-    this.color = '#ff4444';
-
-    // TODO: Add additional enemy properties
-    // Examples: this.aiType = 'chase', this.target = null
+    this.color = "#C82626";
+    this.target = null; 
   }
 
   update() {
@@ -31,7 +33,6 @@ class Enemy extends GameObject {
   }
 
   draw() {
-    // TODO: Draw the enemy
     fill(this.color);
     ellipse(this.x, this.y, this.size * 2);
   }
@@ -43,7 +44,8 @@ class Enemy extends GameObject {
     }
   }
 
-  // TODO: Add enemy-specific methods
+
+  //TODO: Add enemy-specific methods
   // Examples: patrol(), attack(), dropLoot()
 }
 

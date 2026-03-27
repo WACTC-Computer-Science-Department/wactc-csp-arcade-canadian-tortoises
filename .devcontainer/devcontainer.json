@@ -1,0 +1,32 @@
+{
+  "name": "Team Game - OOP",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ritwickdey.LiveServer",
+        "esbenp.prettier-vscode",
+        "formulahendry.auto-rename-tag",
+        "usernamehw.errorlens"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
+        "editor.wordWrap": "on",
+        "editor.bracketPairColorization.enabled": true,
+        "editor.minimap.enabled": false,
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "liveServer.settings.port": 5500
+      }
+    }
+  },
+  "forwardPorts": [5500],
+  "portsAttributes": {
+    "5500": {
+      "label": "Game Preview",
+      "onAutoForward": "openBrowser"
+    }
+  }
+}
