@@ -80,9 +80,17 @@ class BossEnemy extends Enemy {
     this.damage = 40;
     this.phase = 1;
   }
-
+}
+  class miteEnemy extends Enemy {
+  constructor(x, y) {
+    super(x, y, 8, 4); // smaller, faster
+    this.color = "#2ba76f";
+    this.health = 3;
+    this.damage = 1;
+  }
+}
   update() {
     super.update();  // call parent AI
     // Add boss-specific behavior based on this.phase
   }
-}
+
