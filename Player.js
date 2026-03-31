@@ -49,8 +49,8 @@ class Player extends GameObject {
     }
     // TODO: Add visual feedback (flash red, knockback, etc.)
   }
-
   // TODO: Add player-specific methods
   // Examples: shoot(), dash(), useAbility(), heal()
+
 }
 
