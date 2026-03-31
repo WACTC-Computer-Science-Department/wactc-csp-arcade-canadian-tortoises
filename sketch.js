@@ -5,10 +5,16 @@
 
 let gm;  // GameManager instance
 
+function preload() {
+  loadImage(); 
+}
+
 function setup() {
   createCanvas(800, 500);
   textFont('monospace');
   gm = new GameManager();
+  charaterX = width / 2;
+  charaterY = height / 2;
 }
 
 function draw() {
@@ -22,6 +28,11 @@ function draw() {
   } else if (gm.gameState === 'gameover') {
     drawGameOver(gm);
   }
+  charaterX = constrain(charaterX, 0, width - 80);
+  charaterY = constrain(charaterY, 0, height - 100);
+
+  image(playerImg, charaterX, charaterY, 80, 100);
+
 }
 
 function keyPressed() {
