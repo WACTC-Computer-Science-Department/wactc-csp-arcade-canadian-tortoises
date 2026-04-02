@@ -18,7 +18,7 @@ class GameManager {
   }
 
   startGame() {
-    this.player = new Player(width / 2, height / 2);
+    this.player = new Player(width / 2, height / 2, playerImg);
     this.enemies = [];
     this.projectiles = [];
     this.score = 0;

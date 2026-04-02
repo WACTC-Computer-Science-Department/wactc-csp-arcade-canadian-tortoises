@@ -6,7 +6,7 @@
 let gm;  // GameManager instance
 
 function preload() {
-  loadImage(); 
+  loadGameAssets(); 
 }
 
 function setup() {
@@ -30,8 +30,6 @@ function draw() {
   }
   charaterX = constrain(charaterX, 0, width - 80);
   charaterY = constrain(charaterY, 0, height - 100);
-
-  image(playerImg, charaterX, charaterY, 80, 100);
 
 }
 

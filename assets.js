@@ -1,5 +1,5 @@
 let playerImg;
 
-function loadImage(){
-    playerImg = loadImage('Assets/charater.png');
+function loadGameAssets(){
+    playerImg = p5.prototype.loadImage('Assets/charater.png');
 }
