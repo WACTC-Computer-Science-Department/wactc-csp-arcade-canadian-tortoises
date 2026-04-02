@@ -87,7 +87,9 @@ class GameManager {
     else if (side === 2) { x = random(width); y = height + 20; }
     else { x = -20; y = random(height); }
     
-    this.enemies.push(new Enemy(x, y));
+    let enemy = new Enemy(x, y);
+    enemy.target = this.player;
+    this.enemies.push(enemy);
   }
 
   checkCollisions() {
@@ -116,7 +118,6 @@ class GameManager {
       }
     }
   }
-
   cleanup() {
     // Remove dead enemies (backward loop!)
     for (let i = this.enemies.length - 1; i >= 0; i--) {

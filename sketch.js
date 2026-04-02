@@ -28,6 +28,7 @@ function draw() {
   } else if (gm.gameState === 'gameover') {
     drawGameOver(gm);
   }
+
   charaterX = constrain(charaterX, 0, width - 80);
   charaterY = constrain(charaterY, 0, height - 100);
 

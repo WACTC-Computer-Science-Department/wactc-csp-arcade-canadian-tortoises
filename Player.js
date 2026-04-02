@@ -21,8 +21,8 @@ class Player extends GameObject {
       if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) this.x += this.speed;
       if (keyIsDown(UP_ARROW) || keyIsDown(87)) this.y -= this.speed;
       if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) this.y += this.speed;
-      if (keyIsDown(SHIFT) || keyIsDown(16))this.speed = 10
-      else this.speed = 5
+      if (keyIsDown(SHIFT) || keyIsDown(16))this.speed = 5
+      else this.speed = 3
         
     this.x = constrain(this.x, this.size, width - this.size);
     this.y = constrain(this.y, this.size, height - this.size);
@@ -31,19 +31,19 @@ class Player extends GameObject {
   draw() {
     // TODO: Draw the player
     if (this.img) {
-      image(this.img, this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
+      image(this.img, this.x - this.size, this.y - this.size, this.size * 3, this.size * 3);
     } else {
       fill(this.color);
       ellipse(this.x, this.y, this.size * 2);
     }
 
     // TODO: Draw health bar above player
-    let barWidth = 30;
+    let barWidth = 50;
     let healthPercent = this.health / this.maxHealth;
     fill(100);
-    rect(this.x - barWidth/2, this.y - this.size - 10, barWidth, 4);
+    rect(this.x - barWidth/3, this.y - this.size - 10, barWidth, 4);
     fill(0, 255, 100);
-    rect(this.x - barWidth/2, this.y - this.size - 10, barWidth * healthPercent, 4);
+    rect(this.x - barWidth/3, this.y - this.size - 10, barWidth * healthPercent, 4);
   }
 
   takeDamage(amount) {
