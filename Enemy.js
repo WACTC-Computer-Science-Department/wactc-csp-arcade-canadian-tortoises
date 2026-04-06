@@ -34,9 +34,10 @@ class Enemy extends GameObject {
     fill(this.color);
     ellipse(this.x, this.y, this.size * 2);
     let barWidth = 50;
-    let enemyHealthPercent = this.health;
+    let enemyHealthPercent = this.health / 30; 
     fill(100);
     rect(this.x - barWidth/2, this.y - this.size - 10, barWidth, 4);
+    
     fill(0, 255, 100);
     rect(this.x - barWidth/2, this.y - this.size - 10, barWidth * enemyHealthPercent, 4);
   }

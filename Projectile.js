@@ -42,7 +42,6 @@ class Projectile extends GameObject {
   // TODO: Create projectile subclasses for variety
   // Examples: class Missile extends Projectile (homing)
   //           class Laser extends Projectile (instant, no travel)
-<<<<<<< HEAD
   //           class Spell extends Projectile (area damage)
 } 
 class StrongBow extends Projectile {
@@ -53,8 +52,7 @@ class StrongBow extends Projectile {
   this.color = '#3562c4';
   }
 }
-=======
-  //           class Spell extends Projectile (area damage)  
+
   class StrongBow extends Projectile {
     constructor(x, y, dirX, dirY, speed, damage) {
     super(x, y, 4);  // size = 4
@@ -83,8 +81,9 @@ class StrongBow extends Projectile {
   }
 
   class Laser extends Projectile{
->>>>>>> 022b1b8554f1ca37d7cca401132225cd29e514a3
-
+    constructor(x, y, dirX, dirY, speed, damage) {
+    super(x, y, 4); 
+    }}
 class Lazer extends Projectile {
   constructor(x, y, dirX, dirY, speed, damage) {
   super(x, y, 4); 
@@ -94,7 +93,6 @@ class Lazer extends Projectile {
   }
 }
 
-<<<<<<< HEAD
 class Homing extends Projectile {
   constructor(x, y, dirX, dirY, speed, damage) {
   super(x, y, 4); 
@@ -103,5 +101,3 @@ class Homing extends Projectile {
   this.color = '#285e49';
   }
 }
-=======
->>>>>>> 022b1b8554f1ca37d7cca401132225cd29e514a3

@@ -10,7 +10,10 @@ class Player extends GameObject {
     this.health = 100;
     this.maxHealth = 100;
     this.color = color(0,2,44);
-    this.img = img;
+    this.img_up = img;
+    this.img_down = img;
+    this.img_left = img;
+    this.img_right = img;
 
     // TODO: Add any additional properties your player needs
     // Examples: this.abilities = [], this.score = 0, this.direction = 0
@@ -27,7 +30,7 @@ class Player extends GameObject {
     this.x = constrain(this.x, this.size, width - this.size);
     this.y = constrain(this.y, this.size, height - this.size);
   }
-
+  
   draw() {
     // TODO: Draw the player
     if (this.img) {
