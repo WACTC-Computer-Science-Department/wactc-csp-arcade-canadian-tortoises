@@ -1,5 +1,5 @@
 let playerImg;
 
-function loadImage(){
-    playerImg = loadImage('Assets/charater.png');
+function loadGameAssets(){
+    playerImg = loadImage('Assets/down_player.png');
 }
