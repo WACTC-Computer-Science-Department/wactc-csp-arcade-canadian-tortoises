@@ -38,70 +38,30 @@ class Projectile extends GameObject {
     fill(this.color);
     ellipse(this.x, this.y, this.size * 2);
   }
+}
 
-  // TODO: Create projectile subclasses for variety
-  // Examples: class Missile extends Projectile (homing)
-  //           class Laser extends Projectile (instant, no travel)
-<<<<<<< HEAD
-  //           class Spell extends Projectile (area damage)
-} 
+// TODO: Create projectile subclasses for variety
+// Examples: class Missile extends Projectile (homing)
+//           class Laser extends Projectile (instant, no travel)
+
 class StrongBow extends Projectile {
-  constructor(x, y, dirX, dirY, speed, damage) {
-  super(x, y, 4); 
-  this.speed = 5;
-  this.damage = 20;
-  this.color = '#3562c4';
+  constructor(x, y, dirX, dirY) {
+    super(x, y, dirX, dirY, 5, 20);
+    this.color = '#3562c4';
   }
 }
-=======
-  //           class Spell extends Projectile (area damage)  
-  class StrongBow extends Projectile {
-    constructor(x, y, dirX, dirY, speed, damage) {
-    super(x, y, 4);  // size = 4
-    this.speed = speed || 8;
-    this.damage = damage || 10;
-    this.color = '#3562c4';
-    }
-  }
-
-  class Lazer extends Projectile {
-    constructor(x, y, dirX, dirY, speed, damage) {
-    super(x, y, 4);  // size = 4
-    this.speed = speed || 8;
-    this.damage = damage || 10;
-    this.color = '#3562c4';
-    }
-  }
-
-  class Spell extends Projectile {
-    constructor(x, y, dirX, dirY, speed, damage) {
-    super(x, y, 4);  // size = 4
-    this.speed = speed || 8;
-    this.damage = damage || 10;
-    this.color = '#3562c4';
-    }
-  }
-
-  class Laser extends Projectile{
->>>>>>> 022b1b8554f1ca37d7cca401132225cd29e514a3
 
 class Lazer extends Projectile {
-  constructor(x, y, dirX, dirY, speed, damage) {
-  super(x, y, 4); 
-  this.speed = 20;
-  this.damage = 5;
-  this.color = '#9b0000';
+  constructor(x, y, dirX, dirY) {
+    super(x, y, dirX, dirY, 20, 5);
+    this.color = '#9b0000';
   }
 }
 
-<<<<<<< HEAD
 class Homing extends Projectile {
-  constructor(x, y, dirX, dirY, speed, damage) {
-  super(x, y, 4); 
-  this.speed = 8;
-  this.damage = 15;
-  this.color = '#285e49';
+  constructor(x, y, dirX, dirY) {
+    super(x, y, dirX, dirY, 8, 15);
+    this.color = '#285e49';
   }
 }
-=======
->>>>>>> 022b1b8554f1ca37d7cca401132225cd29e514a3
+
