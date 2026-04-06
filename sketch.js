@@ -4,17 +4,16 @@
 // ============================================
 
 let gm;  // GameManager instance
+let playerImg;
 
 function preload() {
-  loadGameAssets(); 
+  playerImg = loadImage('assets/charater_up.png');
 }
 
 function setup() {
   createCanvas(800, 500);
   textFont('monospace');
   gm = new GameManager();
-  charaterX = width / 2;
-  charaterY = height / 2;
 }
 
 function draw() {
@@ -28,15 +27,12 @@ function draw() {
   } else if (gm.gameState === 'gameover') {
     drawGameOver(gm);
   }
-
-  charaterX = constrain(charaterX, 0, width - 80);
-  charaterY = constrain(charaterY, 0, height - 100);
-
 }
 
 function keyPressed() {
+  if (!gm) return;
   if (gm.gameState === 'menu' && (key === ' ' || keyCode === ENTER)) {
-    gm.startGame();
+    gm.startGame(playerImg);
   } else if (gm.gameState === 'gameover' && (key === 'r' || key === 'R')) {
     gm.gameState = 'menu';
   }
@@ -45,6 +41,7 @@ function keyPressed() {
 }
 
 function mousePressed() {
+  if (!gm) return;
   if (gm.gameState === 'playing') {
     gm.playerShoot(mouseX, mouseY);
   }

@@ -33,8 +33,8 @@ class Player extends GameObject {
   
   draw() {
     // TODO: Draw the player
-    if (this.img) {
-      image(this.img, this.x - this.size, this.y - this.size, this.size * 3, this.size * 3);
+    if (this.img_up) {
+      image(this.img_up, this.x - this.size, this.y - this.size, this.size * 3, this.size * 3);
     } else {
       fill(this.color);
       ellipse(this.x, this.y, this.size * 2);

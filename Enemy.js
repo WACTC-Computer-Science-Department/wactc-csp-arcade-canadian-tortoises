@@ -79,31 +79,13 @@ class BossEnemy extends Enemy {
     this.phase = 1;
   }
 }
-  class miteEnemy extends Enemy {
+
+class miteEnemy extends Enemy {
   constructor(x, y) {
     super(x, y, 8, 4); // smaller, faster
     this.color = "#2ba76f";
     this.health = 3;
     this.damage = 1;
-  }
-    spawnEnemy() {
-// //   // ... your existing position code ...
-  let newEnemy = new Enemy(x, y);
-  newEnemy.target = this.player; // TELL THE ENEMY TO CHASE THE PLAYER
-  this.enemies.push(newEnemy);
-  }
-  // }
-   update() {
-  if (this.target) {
-    let dx = this.target.x - this.x;
-    let dy = this.target.y - this.y;
-    let distance = dist(this.x, this.y, this.target.x, this.target.y);
-
-    if (distance > 0) {
-      this.x += (dx / distance) * this.speed;
-      this.y += (dy / distance) * this.speed;
-      }
-    }
   }
 }
 

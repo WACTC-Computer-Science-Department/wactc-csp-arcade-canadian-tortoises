@@ -4,8 +4,8 @@ let characterImg_left;
 let characterImg_right;
 
 function loadGameAssets(){
-    characterImg_down = loadImage('Assets/character_down.png');
-    characterImg_up = loadImage('Assets/character_up.png');
-    characterImg_left = loadImage('Assets/character_left.png');
-    characterImg_right = loadImage('Assets/character_right.png');
+    characterImg_down = loadImage('assets/character_down.png');
+    characterImg_up = loadImage('assets/character_up.png');
+    characterImg_left = loadImage('assets/character_left.png');
+    characterImg_right = loadImage('assets/character_right.png');
 }
