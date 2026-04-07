@@ -7,7 +7,7 @@ let gm;  // GameManager instance
 let playerImg;
 
 function preload() {
-  playerImg = loadImage('assets/charater_up.png');
+  playerImg = loadImage('Assets/charater_up.png');
 }
 
 function setup() {
@@ -27,6 +27,7 @@ function draw() {
   } else if (gm.gameState === 'gameover') {
     drawGameOver(gm);
   }
+
 }
 
 function keyPressed() {
@@ -37,7 +38,9 @@ function keyPressed() {
     gm.gameState = 'menu';
   }
   // TODO: Add game-specific key controls
-  // Example: if (key === ' ' && gm.gameState === 'playing') { gm.playerShoot(mouseX, mouseY); }
+  if (key === 'Escape') {
+    gm.gameState = 'menu';
+  }
 }
 
 function mousePressed() {
