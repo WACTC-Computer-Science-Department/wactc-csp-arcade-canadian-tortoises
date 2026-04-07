@@ -72,14 +72,10 @@ class GameManager {
 
     // Draw player last (on top)
     this.player.draw();
-    console.log(this.enemies.length);
   }
 
   spawnEnemy() {
-    // TODO: Spawn enemies at random positions
-    // Use different Enemy subclasses for variety!
-    //
-    // Example:
+    // Spawn enemies at random positions around screen edges
     let side = floor(random(4));  // 0=top, 1=right, 2=bottom, 3=left
     let x, y;
     if (side === 0) { x = random(width); y = -20; }
