@@ -15,10 +15,15 @@ class GameManager {
     this.spawnTimer = 0;
     this.spawnRate = 90;  // frames between spawns
     this.gameState = 'menu';  // 'menu', 'playing', 'gameover'
+    let tileSize = 40;
+    let cols = floor(width / tileSize);
+    let rows = floor(height / tileSize); // Fit canvas exactly
+    this.terrain = new Terrain(cols, rows, tileSize);
   }
 
   startGame(img) {
     this.player = new Player(width / 2, height / 2, img);
+    this.terrain.clearArea(this.player.x, this.player.y, 1);
     this.enemies = [];
     this.projectiles = [];
     this.score = 0;
@@ -31,8 +36,8 @@ class GameManager {
   update() {
     if (this.gameState !== 'playing') return;
 
-    // Update player
-    this.player.update();
+    // Update player with terrain collision
+    this.player.update(this.terrain);
 
     // Spawn enemies
     this.spawnTimer++;
@@ -60,6 +65,9 @@ class GameManager {
 
   draw() {
     if (this.gameState !== 'playing') return;
+
+    // Draw terrain first so game objects appear on top
+    this.terrain.draw();
 
     // TODO: Draw all game objects (polymorphic — each draws itself!)
     for (let i = 0; i < this.enemies.length; i++) {

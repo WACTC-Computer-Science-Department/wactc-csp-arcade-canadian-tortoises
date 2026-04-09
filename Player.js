@@ -19,14 +19,25 @@ class Player extends GameObject {
     // Examples: this.abilities = [], this.score = 0, this.direction = 0
   }
 
-  update() {
-      if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) this.x -= this.speed;
-      if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) this.x += this.speed;
-      if (keyIsDown(UP_ARROW) || keyIsDown(87)) this.y -= this.speed;
-      if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) this.y += this.speed;
-      if (keyIsDown(SHIFT) || keyIsDown(16))this.speed = 5
-      else this.speed = 3
-        
+  update(terrain) {
+    let nextX = this.x;
+    let nextY = this.y;
+
+    if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) nextX -= this.speed;
+    if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) nextX += this.speed;
+    if (keyIsDown(UP_ARROW) || keyIsDown(87)) nextY -= this.speed;
+    if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) nextY += this.speed;
+
+    if (keyIsDown(SHIFT) || keyIsDown(16)) this.speed = 5;
+    else this.speed = 3;
+
+    if (!terrain || !terrain.isBlockedAt(nextX, this.y, this.size)) {
+      this.x = nextX;
+    }
+    if (!terrain || !terrain.isBlockedAt(this.x, nextY, this.size)) {
+      this.y = nextY;
+    }
+
     this.x = constrain(this.x, this.size, width - this.size);
     this.y = constrain(this.y, this.size, height - this.size);
   }
