@@ -4,10 +4,7 @@ class Item extends GameObject {
     this.name = name;
     this.icon = icon;
   }
-  use(player) {
-    // Override in subclass!
-    console.log("Item used");
-  }
+  use(player){  }
 }
 
 class HealthPotion extends Item {
@@ -18,4 +15,15 @@ class HealthPotion extends Item {
     player.health = Math.min(player.maxHealth, player.health + 20);
     console.log("Health potion used");
   }
+}
+class Crossbow extends Item {
+  constructor(x, y,damage,range) {
+    super(x, y, "Crossbow", null);
+    this.damage = damage;
+    this.range = range;
+  }
+  use(player) {
+    player.hasCrossbow = true;
+    console.log("Crossbow picked up");
+  } 
 }
