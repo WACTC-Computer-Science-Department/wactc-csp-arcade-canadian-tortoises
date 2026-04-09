@@ -83,7 +83,13 @@ class GameManager {
     else if (side === 2) { x = random(width); y = height + 20; }
     else { x = -20; y = random(height); }
     
-    let enemy = new Enemy(x, y);
+    let enemy;
+    let r = random();
+    if (r < 0.6) enemy = new Enemy(x, y);  // 60% normal
+    else if (r < 0.85) enemy = new FastEnemy(x, y);  // 25% fast
+    else if (r < 0.95) enemy = new TankEnemy(x, y); // 10% tank
+    else enemy = new BossEnemy(x, y); // 5% boss
+
     enemy.target = this.player;
     this.enemies.push(enemy);
   }
