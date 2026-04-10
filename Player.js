@@ -9,7 +9,7 @@ class Player extends GameObject {
     this.speed = 5;
     this.health = 100;
     this.maxHealth = 100;
-    this.color = color(0,2,44);
+    this.color = color(255, 255, 255);
     this.img_up = img;
     this.img_down = img;
     this.img_left = img;
@@ -38,8 +38,8 @@ class Player extends GameObject {
       this.y = nextY;
     }
 
-    this.x = constrain(this.x, this.size, width - this.size);
-    this.y = constrain(this.y, this.size, height - this.size);
+    this.x = constrain(this.x, this.size * 2, width - this.size * 2);
+    this.y = constrain(this.y, this.size * 2, height - this.size * 2);
   }
   
   draw() {

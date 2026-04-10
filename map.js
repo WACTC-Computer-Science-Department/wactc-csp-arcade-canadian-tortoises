@@ -3,8 +3,8 @@ class Cell {
     this.row = row;
     this.col = col;
     this.size = size;
-    this.wall_type = random(1);
-    this.color = [random(50), random(50), random(255)]; // Random color for each tile
+    this.isWall = false;
+    this.color = [80, 180, 140]; // default floor color
   }
 
   display() {
@@ -30,14 +30,14 @@ class Terrain {
       for (let col = 0; col < this.cols; col++) {
         let cell = new Cell(row, col, this.cellSize);
         if (row === 0 || col === 0 || row === this.rows - 1 || col === this.cols - 1) {
-          cell.wall_type = true;
+          cell.isWall = true;
           cell.color = [0, 0, 0]; // Black for borders
         } else {
-          cell.wall_type = random(1) < 0.20;
-          if (cell.wall_type) {
+          cell.isWall = random(1) < 0.20;
+          if (cell.isWall) {
             cell.color = [255, 0, 0]; // Red for walls
           } else {
-            // Keep random color for floors
+            cell.color = [80 + random(30), 140 + random(40), 120 + random(40)]; // Greenish floor colors
           }
         }
         rowCells.push(cell);
