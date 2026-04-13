@@ -48,7 +48,7 @@ class GameManager {
 
     // TODO: Update all enemies (polymorphic — works for any Enemy subclass!)
     for (let i = 0; i < this.enemies.length; i++) {
-      this.enemies[i].update();
+      this.enemies[i].update(this);
     }
 
     // TODO: Update all projectiles
@@ -93,10 +93,11 @@ class GameManager {
     
     let enemy;
     let r = random();
-    if (r < 0.6) enemy = new Enemy(x, y);  // 60% normal
-    else if (r < 0.85) enemy = new FastEnemy(x, y);  // 25% fast
-    else if (r < 0.95) enemy = new TankEnemy(x, y); // 10% tank
-    else enemy = new BossEnemy(x, y); // 5% boss
+    if (r < 0.5) enemy = new Enemy(x, y);  // 50% normal
+    else if (r < 0.7) enemy = new FastEnemy(x, y);  // 20% fast
+    else if (r < 0.85) enemy = new TankEnemy(x, y); // 15% tank
+    else if (r < 0.95) enemy = new BossEnemy(x, y); // 10% boss
+    else enemy = new sniperEnemy(x, y); // 5% sniper
 
     enemy.target = this.player;
     this.enemies.push(enemy);
@@ -107,12 +108,23 @@ class GameManager {
     // The beauty of OOP: collidesWith() works for ANY subclass!
     for (let i = 0; i < this.projectiles.length; i++) {
       for (let j = 0; j < this.enemies.length; j++) {
-        if (this.projectiles[i].collidesWith(this.enemies[j])) {
+        if (this.projectiles[i].owner === 'player' && this.projectiles[i].collidesWith(this.enemies[j])) {
           this.enemies[j].takeDamage(this.projectiles[i].damage);
           this.projectiles[i].alive = false;
           if (!this.enemies[j].alive) {
             this.score += 10;
           }
+        }
+      }
+    }
+
+    // Check projectile-player collisions
+    for (let i = 0; i < this.projectiles.length; i++) {
+      if (this.projectiles[i].owner === 'enemy' && this.projectiles[i].collidesWith(this.player)) {
+        this.player.takeDamage(this.projectiles[i].damage);
+        this.projectiles[i].alive = false;
+        if (!this.player.alive) {
+          this.gameOver();
         }
       }
     }
@@ -153,7 +165,7 @@ class GameManager {
     this.projectiles.push(p);
   }
 
-   playerShoot_bigbullet(targetX, targetY) {
+  playerShoot_bigbullet(targetX, targetY) {
     // Create a projectile aimed at the target
     let dirX = targetX - this.player.x;
     let dirY = targetY - this.player.y;
@@ -163,6 +175,14 @@ class GameManager {
     console.log('Big bullet created at', this.player.x, this.player.y, 'towards', targetX, targetY);
   }
 
+  enemyShoot(enemy, targetX, targetY) {
+    // Create a projectile aimed at the target from enemy position
+    let dirX = targetX - enemy.x;
+    let dirY = targetY - enemy.y;
+    let p = new Projectile(enemy.x, enemy.y, dirX, dirY);
+    p.owner = 'enemy';
+    this.projectiles.push(p);
+  }
 
   gameOver() {
     if (this.score > this.highScore) {
