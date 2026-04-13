@@ -72,7 +72,6 @@ class GameManager {
 
     // Draw player last (on top)
     this.player.draw();
-    console.log(this.enemies.length);
   }
 
   spawnEnemy() {
