@@ -9,36 +9,62 @@ class Player extends GameObject {
     this.speed = 5;
     this.health = 100;
     this.maxHealth = 100;
-    this.color = color(0,2,44);
+    this.color = color(255, 255, 255);
     this.img_up = img;
     this.img_down = img;
     this.img_left = img;
     this.img_right = img;
-
-    // TODO: Add any additional properties your player needs
-    // Examples: this.abilities = [], this.score = 0, this.direction = 0
+    this.direction = 'down';  // current facing direction
   }
 
-  update() {
-      if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) this.x -= this.speed;
-      if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) this.x += this.speed;
-      if (keyIsDown(UP_ARROW) || keyIsDown(87)) this.y -= this.speed;
-      if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) this.y += this.speed;
-      if (keyIsDown(SHIFT) || keyIsDown(16))this.speed = 5
-      else this.speed = 3
-        
-    this.x = constrain(this.x, this.size, width - this.size);
-    this.y = constrain(this.y, this.size, height - this.size);
+  update(terrain) {
+    let nextX = this.x;
+    let nextY = this.y;
+
+    if (keyIsDown(LEFT_ARROW) || keyIsDown(65))  { nextX -= this.speed; this.direction = 'left'; }
+    if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) { nextX += this.speed; this.direction = 'right'; }
+    if (keyIsDown(UP_ARROW) || keyIsDown(87))    { nextY -= this.speed; this.direction = 'up'; }
+    if (keyIsDown(DOWN_ARROW) || keyIsDown(83))  { nextY += this.speed; this.direction = 'down'; }
+
+    if (keyIsDown(SHIFT) || keyIsDown(16)) this.speed = 5;
+    else this.speed = 3;
+
+    if (!terrain || !terrain.isBlockedAt(nextX, this.y, this.size)) {
+      this.x = nextX;
+    }
+    if (!terrain || !terrain.isBlockedAt(this.x, nextY, this.size)) {
+      this.y = nextY;
+    }
+
+    this.x = constrain(this.x, this.size * 2, width - this.size * 2);
+    this.y = constrain(this.y, this.size * 2, height - this.size * 2);
   }
   
   draw() {
-    // TODO: Draw the player
-    if (this.img_up) {
-      image(this.img_up, this.x - this.size, this.y - this.size, this.size * 3, this.size * 3);
+    // Pick sprite based on facing direction
+    let img = this.img_down;
+    if (this.direction === 'up') img = this.img_up;
+    else if (this.direction === 'left') img = this.img_left;
+    else if (this.direction === 'right') img = this.img_right;
+
+    push();
+    if (img) {
+      // If all images are the same sprite, rotate it to face the direction
+      if (this.img_up === this.img_down) {
+        translate(this.x, this.y);
+        if (this.direction === 'up') rotate(PI);
+        else if (this.direction === 'left') rotate(HALF_PI);
+        else if (this.direction === 'right') rotate(-HALF_PI);
+        else rotate(0);  // down
+        image(img, -this.size, -this.size, this.size * 3, this.size * 3);
+      } else {
+        image(img, this.x - this.size, this.y - this.size, this.size * 3, this.size * 3);
+      }
     } else {
       fill(this.color);
       ellipse(this.x, this.y, this.size * 2);
     }
+    pop();
 
     // TODO: Draw health bar above player
     let barWidth = 50;
