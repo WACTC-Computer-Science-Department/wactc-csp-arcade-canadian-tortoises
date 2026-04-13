@@ -65,3 +65,11 @@ class Homing extends Projectile {
     this.color = '#285e49';
   }
 }
+class BigBullet extends Projectile {
+  constructor(x, y, dirX, dirY) {
+    super(x, y, dirX, dirY, 4, 25);  // Normal speed
+    this.size = 20;  // Make it bigger than the default size of 4
+    this.color = '#ff0000';  // Bright red for visibility
+  }
+}
+

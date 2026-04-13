@@ -29,16 +29,11 @@ class Terrain {
       let rowCells = [];
       for (let col = 0; col < this.cols; col++) {
         let cell = new Cell(row, col, this.cellSize);
+        cell.isWall = false;
         if (row === 0 || col === 0 || row === this.rows - 1 || col === this.cols - 1) {
-          cell.isWall = true;
-          cell.color = [0, 0, 0]; // Black for borders
+          cell.color = [0, 0, 0]; // Black border color
         } else {
-          cell.isWall = random(1) < 0.20;
-          if (cell.isWall) {
-            cell.color = [255, 0, 0]; // Red for walls
-          } else {
-            cell.color = [80 + random(30), 140 + random(40), 120 + random(40)]; // Greenish floor colors
-          }
+          cell.color = [80 + random(30), 140 + random(40), 120 + random(40)]; // Greenish floor colors
         }
         rowCells.push(cell);
       }
