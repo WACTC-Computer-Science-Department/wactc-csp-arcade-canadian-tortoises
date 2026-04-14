@@ -18,7 +18,7 @@ class Enemy extends GameObject {
     this.target = null; 
   }
 
-  update(gameManager) {
+  update() {
     // TODO: Add AI behavior
     // Example: Move toward the player
     if (!this.target) return;
@@ -119,4 +119,4 @@ class sniperEnemy extends Enemy {
       }
     }
   }
-}
+
