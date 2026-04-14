@@ -9,5 +9,5 @@ function loadGameAssets(){
     characterImg_up = loadImage('assets/character_up.png');
     characterImg_left = loadImage('assets/character_left.png');
     characterImg_right = loadImage('assets/character_right.png');
-    fimg = loadImage('assets/fire.png');
+    fimg = loadImage('assets/fireball.png');
 }
