@@ -4,10 +4,10 @@
 // ============================================
 
 let gm;  // GameManager instance
-let playerImg;
+let img; // Player image
 
 function preload() {
-  playerImg = loadImage('Assets/charater_up.png');
+  img = loadImage('assets/character.png');
 }
 
 function setup() {
@@ -33,7 +33,7 @@ function draw() {
 function keyPressed() {
   if (!gm) return;
   if (gm.gameState === 'menu' && (key === ' ' || keyCode === ENTER)) {
-    gm.startGame(playerImg);
+    gm.startGame(img);
   } else if (gm.gameState === 'gameover' && (key === 'r' || key === 'R')) {
     gm.gameState = 'menu';
   }
