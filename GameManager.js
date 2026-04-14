@@ -48,7 +48,7 @@ class GameManager {
 
     // TODO: Update all enemies (polymorphic — works for any Enemy subclass!)
     for (let i = 0; i < this.enemies.length; i++) {
-      this.enemies[i].update();
+      this.enemies[i].update(this);
     }
 
     // TODO: Update all projectiles
@@ -93,11 +93,12 @@ class GameManager {
     
     let enemy;
     let r = random();
-    if (r < 0.6) enemy = new Enemy(x, y);  // 60% normal
-    else if (r < 0.85) enemy = new FastEnemy(x, y);  // 25% fast
-    else if (r < 0.95) enemy = new TankEnemy(x, y); // 10% tank
-    else if (r < 0.99) enemy = new sniperEnemy(x, y); // 4% shooter
-    else enemy = new BossEnemy(x, y); // 5% boss
+    if (r < 0.5) enemy = new Enemy(x, y);  // 50% normal
+    else if (r < 0.7) enemy = new FastEnemy(x, y);  // 20% fast
+    else if (r < 0.85) enemy = new TankEnemy(x, y); // 15% tank
+    else if (r < 0.95) enemy = new sniperEnemy(x, y); // 10% shooter
+    else if (r < 0.99) enemy = new medicEnemy(x, y); // 4% medic
+    else enemy = new BossEnemy(x, y); // 1% boss
 
     enemy.target = this.player;
     this.enemies.push(enemy);

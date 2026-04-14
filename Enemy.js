@@ -18,7 +18,7 @@ class Enemy extends GameObject {
     this.target = null; 
   }
 
-  update() {
+  update(gameManager) {
     // TODO: Add AI behavior
     // Example: Move toward the player
     if (!this.target) return;
@@ -95,6 +95,27 @@ class miteEnemy extends Enemy {
     this.damage = 1;
   }
 }
+class medicEnemy extends Enemy {
+  constructor(x, y) {
+    super(x, y, 12, 2); // normal size, normal speed 
+    this.color = "#00ff00";
+    this.health = 20;
+    this.maxHealth = this.health;
+    this.damage = -10; // Heals player instead of damaging
+  }
+
+  update(gameManager) {
+    // Heal nearby enemies instead of moving
+    let healRange = 100;
+    let healAmount = 5;
+    for (let enemy of gameManager.enemies) {
+      if (enemy !== this && dist(this.x, this.y, enemy.x, enemy.y) < healRange) {
+        enemy.health = min(enemy.health + healAmount, enemy.maxHealth);
+      }
+    }
+  }
+
+
 class sniperEnemy extends Enemy {
   constructor(x, y) {
     super(x, y, 12, 2); // normal size, normal speed
