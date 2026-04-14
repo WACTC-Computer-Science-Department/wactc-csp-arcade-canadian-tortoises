@@ -96,6 +96,7 @@ class GameManager {
     if (r < 0.6) enemy = new Enemy(x, y);  // 60% normal
     else if (r < 0.85) enemy = new FastEnemy(x, y);  // 25% fast
     else if (r < 0.95) enemy = new TankEnemy(x, y); // 10% tank
+    else if (r < 0.99) enemy = new sniperEnemy(x, y); // 4% shooter
     else enemy = new BossEnemy(x, y); // 5% boss
 
     enemy.target = this.player;
