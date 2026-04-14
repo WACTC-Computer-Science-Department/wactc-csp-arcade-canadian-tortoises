@@ -113,8 +113,7 @@ class medicEnemy extends Enemy {
       }
     }
   }
-
-
+}
 class sniperEnemy extends Enemy {
   constructor(x, y) {
     super(x, y, 12, 2); // normal size, normal speed
