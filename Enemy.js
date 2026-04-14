@@ -95,4 +95,28 @@ class miteEnemy extends Enemy {
     this.damage = 1;
   }
 }
-
+class sniperEnemy extends Enemy {
+  constructor(x, y) {
+    super(x, y, 12, 2); // normal size, normal speed
+    this.color = "#0000ff";
+    this.health = 20;
+    this.maxHealth = this.health;
+    this.damage = 15;
+    this.range = 200; 
+    this.shootCooldown = 0;
+    this.target = null;
+  }  
+  update(gameManager) {
+    super.update(gameManager);
+    if (this.target) {
+      let distance = dist(this.x, this.y, this.target.x, this.target.y);
+      if (distance <= this.range && this.shootCooldown <= 0) {
+        gameManager.enemyShoot(this, this.target.x, this.target.y);
+        this.shootCooldown = 60; // shoot every 60 frames (1 second at 60fps)
+      }
+      if (this.shootCooldown > 0) {
+        this.shootCooldown--;
+      }
+    }
+  }
+}

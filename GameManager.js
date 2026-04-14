@@ -74,12 +74,12 @@ class GameManager {
       this.enemies[i].draw();
     }
 
+    // Draw player before projectiles so bullets appear on top
+    this.player.draw();
+
     for (let i = 0; i < this.projectiles.length; i++) {
       this.projectiles[i].draw();
     }
-
-    // Draw player last (on top)
-    this.player.draw();
   }
 
   spawnEnemy() {
@@ -152,6 +152,17 @@ class GameManager {
     p.owner = 'player';
     this.projectiles.push(p);
   }
+
+   playerShoot_bigbullet(targetX, targetY) {
+    // Create a projectile aimed at the target
+    let dirX = targetX - this.player.x;
+    let dirY = targetY - this.player.y;
+    let bigBullet = new BigBullet(this.player.x, this.player.y, dirX, dirY);
+    bigBullet.owner = 'player';
+    this.projectiles.push(bigBullet);
+    console.log('Big bullet created at', this.player.x, this.player.y, 'towards', targetX, targetY);
+  }
+
 
   gameOver() {
     if (this.score > this.highScore) {

@@ -37,7 +37,16 @@ function keyPressed() {
   } else if (gm.gameState === 'gameover' && (key === 'r' || key === 'R')) {
     gm.gameState = 'menu';
   }
-  // TODO: Add game-specific key controls
+
+  // Game-specific key controls
+  if (key === 'c' || key === 'C') {
+    console.log('C pressed, gameState:', gm.gameState);
+    if (gm.gameState === 'playing') {
+      // Example action: shoot or trigger a player ability
+      gm.playerShoot_bigbullet(mouseX, mouseY);
+    }
+  }
+
   if (key === 'Escape') {
     gm.gameState = 'menu';
   }
