@@ -119,4 +119,4 @@ class sniperEnemy extends Enemy {
       }
     }
   }
-
+}
