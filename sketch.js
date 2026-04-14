@@ -7,11 +7,7 @@ let gm;  // GameManager instance
 let img; // Player image
 
 function preload() {
-<<<<<<< HEAD
   img = loadImage('assets/character.png');
-=======
-  playerImg = loadImage('Assets/charater_up.png');
->>>>>>> 32bc865eac9408fe76b1e1e1eae9fd6d82962593
 }
 
 function setup() {

@@ -21,17 +21,10 @@ class Player extends GameObject {
     let nextX = this.x;
     let nextY = this.y;
 
-<<<<<<< HEAD
     if (keyIsDown(LEFT_ARROW) || keyIsDown(65))  { nextX -= this.speed; this.direction = 'left'; }
     if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) { nextX += this.speed; this.direction = 'right'; }
     if (keyIsDown(UP_ARROW) || keyIsDown(87))    { nextY -= this.speed; this.direction = 'up'; }
     if (keyIsDown(DOWN_ARROW) || keyIsDown(83))  { nextY += this.speed; this.direction = 'down'; }
-=======
-    if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) nextX -= this.speed;
-    if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) nextX += this.speed;
-    if (keyIsDown(UP_ARROW) || keyIsDown(87)) nextY -= this.speed;
-    if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) nextY += this.speed;
->>>>>>> 32bc865eac9408fe76b1e1e1eae9fd6d82962593
 
     if (keyIsDown(SHIFT) || keyIsDown(16)) this.speed = 5;
     else this.speed = 3;
