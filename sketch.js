@@ -8,6 +8,7 @@ let img; // Player image
 
 function preload() {
   img = loadImage('assets/character.png');
+  fimg = loadImage('assets/fireball.png');
 }
 
 function setup() {

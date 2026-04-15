@@ -3,6 +3,7 @@ let characterImg_up;
 let characterImg_left; 
 let characterImg_right;
 let crossbowImg;
+let fimg;
 
 function loadGameAssets(){
     characterImg_down = loadImage('assets/character_down.png');
@@ -10,4 +11,5 @@ function loadGameAssets(){
     characterImg_left = loadImage('assets/character_left.png');
     characterImg_right = loadImage('assets/character_right.png');
     crossbowImg = loadImage('assets/crossbow.png');
+    fimg = loadImage('assets/fireball.png');
 }
