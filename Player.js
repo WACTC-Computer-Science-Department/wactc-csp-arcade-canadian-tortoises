@@ -67,12 +67,17 @@ class Player extends GameObject {
     pop();
 
     // TODO: Draw health bar above player
-    let barWidth = 250;
+    let barWidth = 150;
+    let barHeight = 10;
     let healthPercent = this.health / this.maxHealth;
     fill(100);
-    rect(150 - barWidth/3, 450, barWidth, 4);
+    rect(55 - barWidth/3, 90, barWidth, barHeight);
     fill(0, 255, 100);
-    rect(150 - barWidth/3, 450, barWidth * healthPercent, 4);
+    rect(55 - barWidth/3, 90, barWidth * healthPercent, barHeight);
+    strokeWeight(2);
+    stroke(0);
+    rect(55 - barWidth/3, 90, barWidth * healthPercent, barHeight);
+
   }
 
   takeDamage(amount) {

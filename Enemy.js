@@ -35,13 +35,18 @@ class Enemy extends GameObject {
     fill(this.color);
     ellipse(this.x, this.y, this.size * 2);
     let barWidth = 50;
+    let barHeight = 5;
     let enemyHealthPercent = constrain(this.health / this.maxHealth, 0, 1);
 
     fill(100);
-    rect(this.x - barWidth/2, this.y - this.size - 10, barWidth, 4);
+    rect(this.x - barWidth/2, this.y - this.size - 10, barWidth, barHeight);
     
     fill(0, 255, 100);
-    rect(this.x - barWidth/2, this.y - this.size - 10, barWidth * enemyHealthPercent, 4);
+    rect(this.x - barWidth/2, this.y - this.size - 10, barWidth * enemyHealthPercent, barHeight);
+
+    strokeWeight(2);
+    stroke(0);
+    rect(this.x - barWidth/2, this.y - this.size - 10, barWidth * enemyHealthPercent, barHeight);
   }
 
   takeDamage(amount) {

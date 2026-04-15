@@ -45,10 +45,12 @@ class Terrain {
     for (let row = 0; row < this.rows; row++) {
       for (let col = 0; col < this.cols; col++) {
         this.grid[row][col].display();
+    if (this.grid[5][6]) {
+      }
       }
     }
   }
-
+  
   isWallAt(col, row) {
     if (row < 0 || col < 0 || row >= this.rows || col >= this.cols) return false;
     return this.grid[row][col].isWall;

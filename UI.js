@@ -25,8 +25,8 @@ function drawHUD(gm) {
   textSize(14);
   text('Score: ' + gm.score, 10, 10);
   text('Wave: ' + gm.wave, 10, 30);
-  text('Health: ' + gm.player.health, 10, 50);
-  text('Enemies: ' + gm.enemies.length, 10, 70);
+  text('Health: ' + gm.player.health, 10, 70);
+  text('Enemies: ' + gm.enemies.length, 10, 50);
 
   // TODO: Add more HUD elements
   // Ideas: health bar, minimap, wave progress, combo counter
