@@ -82,6 +82,15 @@ class GameManager {
     }
   }
 
+spawnitems(){
+  let x = random(width);
+  let y = random(height);
+  let item;
+  let r = random();
+if (r < 0.5) item = new HealthPotion(x, y);
+else item = new Crossbow(x, y, 10, 200, null);   
+}
+
   spawnEnemy() {
     // Spawn enemies at random positions around screen edges
     let side = floor(random(4));  // 0=top, 1=right, 2=bottom, 3=left
