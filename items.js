@@ -17,10 +17,11 @@ class HealthPotion extends Item {
   }
 }
 class Crossbow extends Item {
-  constructor(x, y,damage,range) {
-    super(x, y, "Crossbow", null);
+  constructor(x, y,damage,range,icon) {
+    super(x, y, "Crossbow", icon);
     this.damage = damage;
     this.range = range;
+    this.icon = icon;
   }
   use(player) {
     player.hasCrossbow = true;
