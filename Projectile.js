@@ -9,6 +9,8 @@ class Projectile extends GameObject {
     this.speed = speed || 8;
     this.damage = damage || 10;
     this.color = '#ffff00';
+       // <-- subclasses set this to a loaded p5.Image to use a sprite
+ 
 
     // Normalize direction
     let len = Math.sqrt(dirX * dirX + dirY * dirY);
@@ -35,9 +37,19 @@ class Projectile extends GameObject {
   }
 
   draw() {
-    fill(this.color);
-    ellipse(this.x, this.y, this.size * 2);
-  }
+      if (this.image) {
+        push();
+        imageMode(CENTER);
+        translate(this.x, this.y);
+        if (this.rotate) rotate(atan2(this.velY, this.velX));
+        image(this.image, 0, 0, this.size * 2, this.size * 2);
+        pop();
+      } else {
+        noStroke();
+        fill(this.color);
+        ellipse(this.x, this.y, this.size * 2);
+      }
+    }
 
   // TODO: Create projectile subclasses for variety
   // Examples: class Missile extends Projectile (homing)
@@ -67,9 +79,10 @@ class Homing extends Projectile {
 }
 class BigBullet extends Projectile {
   constructor(x, y, dirX, dirY) {
-    super(x, y, dirX, dirY, 4, 25);  // Normal speed
-    this.size = 20;  // Make it bigger than the default size of 4
+    super(x, y, dirX, dirY, 4, 50);  // Normal speed
+    this.size = 50;  // Make it bigger than the default size of 4
     this.color = '#ff0000';  // Bright red for visibility
+    this.image = fimg;
   }
 }
 

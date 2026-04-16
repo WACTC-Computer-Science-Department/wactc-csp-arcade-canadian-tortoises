@@ -47,12 +47,10 @@ function keyPressed() {
       gm.playerShoot_bigbullet(mouseX, mouseY);
     }
   }
-
   if (key === 'Escape') {
     gm.gameState = 'menu';
   }
 }
-
 function mousePressed() {
   if (!gm) return;
   if (gm.gameState === 'playing') {
