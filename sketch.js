@@ -9,12 +9,16 @@ let img; // Player image
 function preload() {
   img = loadImage('assets/character.png');
   fimg = loadImage('assets/fireball.png');
+  fimg = loadImage('assets/crossbow.png');
 }
 
 function setup() {
-  createCanvas(800, 500);
+ createCanvas(windowWidth, windowHeight);
   textFont('monospace');
   gm = new GameManager();
+}
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
