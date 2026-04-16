@@ -9,6 +9,7 @@ class GameManager {
     this.player = null;
     this.enemies = [];
     this.projectiles = [];
+    this.items = [];
     this.score = 0;
     this.highScore = 0;
     this.wave = 1;
@@ -26,6 +27,7 @@ class GameManager {
     this.terrain.clearArea(this.player.x, this.player.y, 1);
     this.enemies = [];
     this.projectiles = [];
+    this.items = [];
     this.score = 0;
     this.wave = 1;
     this.spawnTimer = 0;
@@ -74,6 +76,11 @@ class GameManager {
       this.enemies[i].draw();
     }
 
+    // Draw items so the player can see pickups
+    for (let i = 0; i < this.items.length; i++) {
+      this.items[i].draw();
+    }
+
     // Draw player before projectiles so bullets appear on top
     this.player.draw();
 
@@ -82,14 +89,15 @@ class GameManager {
     }
   }
 
-spawnitems(){
-  let x = random(width);
-  let y = random(height);
-  let item;
-  let r = random();
-if (r < 0.5) item = new HealthPotion(x, y);
-else item = new Crossbow(x, y, 10, 200, null);   
-}
+  spawnitems() {
+    let x = random(width);
+    let y = random(height);
+    let item;
+    let r = random();
+    if (r < 0.5) item = new HealthPotion(x, y);
+    else item = new Crossbow(x, y, 10, 200, null);
+    this.items.push(item);
+  }
 
   spawnEnemy() {
     // Spawn enemies at random positions around screen edges
@@ -149,11 +157,22 @@ else item = new Crossbow(x, y, 10, 200, null);
         }
       }
     }
+
+    // Check player-item pickup
+    for (let i = 0; i < this.items.length; i++) {
+      if (this.player.collidesWith(this.items[i])) {
+        this.items[i].use(this.player);
+        this.items[i].alive = false;
+      }
+    }
   }
   cleanup() {
     // Remove dead enemies (backward loop!)
     for (let i = this.enemies.length - 1; i >= 0; i--) {
       if (!this.enemies[i].alive) {
+        if (this.enemies[i] instanceof BossEnemy) {
+          this.items.push(new Crossbow(this.enemies[i].x, this.enemies[i].y, 10, 200, null));
+        }
         this.enemies.splice(i, 1);
       }
     }
@@ -162,6 +181,13 @@ else item = new Crossbow(x, y, 10, 200, null);
     for (let i = this.projectiles.length - 1; i >= 0; i--) {
       if (!this.projectiles[i].alive) {
         this.projectiles.splice(i, 1);
+      }
+    }
+
+    // Remove collected or expired items
+    for (let i = this.items.length - 1; i >= 0; i--) {
+      if (!this.items[i].alive) {
+        this.items.splice(i, 1);
       }
     }
   }
