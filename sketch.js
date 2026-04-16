@@ -13,13 +13,11 @@ function preload() {
 }
 
 function setup() {
- createCanvas(windowWidth, windowHeight);
+createCanvas(1200, 700);
   textFont('monospace');
   gm = new GameManager();
 }
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
+
 
 function draw() {
   background('#1c2e1a');
