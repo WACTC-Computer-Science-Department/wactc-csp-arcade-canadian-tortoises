@@ -88,6 +88,7 @@ class GameManager {
       this.projectiles[i].draw();
     }
   }
+  
 
   spawnitems() {
     let x = random(width);
