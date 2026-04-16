@@ -35,18 +35,13 @@ class Enemy extends GameObject {
     fill(this.color);
     ellipse(this.x, this.y, this.size * 2);
     let barWidth = 50;
-    let barHeight = 5;
     let enemyHealthPercent = constrain(this.health / this.maxHealth, 0, 1);
 
     fill(100);
-    rect(this.x - barWidth/2, this.y - this.size - 10, barWidth, barHeight);
+    rect(this.x - barWidth/2, this.y - this.size - 10, barWidth, 4);
     
     fill(0, 255, 100);
-    rect(this.x - barWidth/2, this.y - this.size - 10, barWidth * enemyHealthPercent, barHeight);
-
-    strokeWeight(2);
-    stroke(0);
-    rect(this.x - barWidth/2, this.y - this.size - 10, barWidth * enemyHealthPercent, barHeight);
+    rect(this.x - barWidth/2, this.y - this.size - 10, barWidth * enemyHealthPercent, 4);
   }
 
   takeDamage(amount) {
@@ -125,7 +120,7 @@ class sniperEnemy extends Enemy {
     this.color = "#0000ff";
     this.health = 20;
     this.maxHealth = this.health;
-    this.damage = 15;
+    this.damage = 25;
     this.range = 200; 
     this.shootCooldown = 0;
     this.target = null;
@@ -136,7 +131,7 @@ class sniperEnemy extends Enemy {
       let distance = dist(this.x, this.y, this.target.x, this.target.y);
       if (distance <= this.range && this.shootCooldown <= 0) {
         gameManager.enemyShoot(this, this.target.x, this.target.y);
-        this.shootCooldown = 60; // shoot every 60 frames (1 second at 60fps)
+        this.shootCooldown = 50; // shoot every 50 frames (approximately 1 second at 60fps)
       }
       if (this.shootCooldown > 0) {
         this.shootCooldown--;
