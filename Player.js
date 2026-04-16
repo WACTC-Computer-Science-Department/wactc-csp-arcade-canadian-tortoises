@@ -3,12 +3,18 @@
 // Extends GameObject with player controls.
 // =======================================
 
+let timer = 0; 
+let regenRate = 0.2; 
+let money = 0;
+
 class Player extends GameObject {
   constructor(x, y, img) {
     super(x, y, 15);  // size = 15
     this.speed = 5;
     this.health = 100;
     this.maxHealth = 100;
+    this.stamina = 100;
+    this.maxStamina = 100;
     this.color = color(255, 255, 255);
     this.img_up = img;
     this.img_down = img;
@@ -26,9 +32,15 @@ class Player extends GameObject {
     if (keyIsDown(UP_ARROW) || keyIsDown(87))    { nextY -= this.speed; this.direction = 'up'; }
     if (keyIsDown(DOWN_ARROW) || keyIsDown(83))  { nextY += this.speed; this.direction = 'down'; }
 
-    if (keyIsDown(SHIFT) || keyIsDown(16)) this.speed = 5;
-    else this.speed = 3;
-
+     
+    if (this.stamina > 0 && (keyIsDown(SHIFT) || keyIsDown(16))) {
+      this.speed = 5;
+      this.stamina -= .8 ; // Decrease stamina while sprinting
+    
+    } else {
+      this.speed = 3; // Reduce speed if stamina is depleted
+    }
+    
     if (!terrain || !terrain.isBlockedAt(nextX, this.y, this.size)) {
       this.x = nextX;
     }
@@ -46,8 +58,22 @@ class Player extends GameObject {
     if (this.direction === 'up') img = this.img_up;
     else if (this.direction === 'left') img = this.img_left;
     else if (this.direction === 'right') img = this.img_right;
-
-    push();
+    
+    if (this.stamina < this.maxStamina) {
+      this.stamina += regenRate;
+    }
+    if (this.stamina <= 0) {
+      timer++;
+      console.log(timer);
+      regenRate = 0;
+      
+      if (timer > 120) { // 2 second cooldown
+        this.stamina++;
+        timer = 0;
+        regenRate = 0.2;
+      }
+    }
+      push();
     if (img) {
       // If all images are the same sprite, rotate it to face the direction
       if (this.img_up === this.img_down) {
@@ -78,6 +104,16 @@ class Player extends GameObject {
     stroke(0);
     rect(55 - barWidth/3, 90, barWidth * healthPercent, barHeight);
 
+
+    // STAMINA BAR
+    let staminaPercent = this.stamina / this.maxStamina;
+    fill(100);
+    rect(55 - barWidth/3, 125, barWidth, barHeight);
+    fill(255, 165, 0);
+    rect(55 - barWidth/3, 125, barWidth * staminaPercent, barHeight);
+    strokeWeight(2);
+    stroke(0);
+    rect(55 - barWidth/3, 125, barWidth * staminaPercent, barHeight);
   }
 
   takeDamage(amount) {
