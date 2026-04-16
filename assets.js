@@ -10,4 +10,5 @@ function loadGameAssets(){
     characterImg_left = loadImage('assets/character_left.png');
     characterImg_right = loadImage('assets/character_right.png');
     fimg = loadImage('assets/fireball.png');
+    fimg = loadImage('assets/crossbow.png');
 }
